@@ -1,0 +1,304 @@
+<html><head>
+<title>WELCOME TO TSSPDCL</title>
+<meta http-equiv="Content-Language" content="en-us">
+<meta content="MSHTML 6.00.2900.3132" name="GENERATOR">
+<meta content="FrontPage.Editor.Document" name="ProgId">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<script src="jquery.min.js"></script>
+<script language="javascript" type="text/javascript"> 
+
+
+$(document).ready(function(){
+	
+	 $("#form1").submit(function(event){
+	event.preventDefault();
+	$("#post-result").html('');
+    var values = $(this).serialize();
+
+    /* Send the data using post and put the results in a div */
+    $.ajax({
+        url: "https://www.billdesk.com/pgidsk/pgijsp/apcpdcl_paydetails_current.jsp",
+        type: "post",
+        data: values,
+        success: function(result){
+    		alert(result[1]+result[2]+result[3]+result[4]+result[5]+result[6]+result[7]+result[8]+result[9]+result.length);
+			var str ="";
+			
+            for(var len =25000;len<=(result.length-7100);len++)
+			{
+				str = str+ result[len];
+			}
+			
+			$("#post-result").html(str);
+        },
+        error:function(){
+            alert("failure");
+            $("#post-result").html('There is error while submit');
+        }
+    });
+       
+    });
+});
+
+
+function validateForm2()
+{
+var uino= new RegExp("^[0-9a-zA-Z ]{1,20}$");
+	
+	if(document.form1.uscno.value!=""){
+		if(!document.form1.uscno.value.match(uino)){
+			alert("Please Enter a valid Unique Service Number.");
+			document.form1.uscno.focus();
+			return false;
+			}
+			else{
+				//document.form1.action="https://www.billdesk.com/pgidsk/pgijsp/apcpdcl_paydetails_current.jsp";
+				//document.form1.submit();
+				}
+		}
+		else{
+	
+	if(document.form1.circle.value=="")
+	{
+		alert(" Please select Circle");
+		document.form1.circle.focus();
+		return false;
+	}
+	else if(document.form1.ero.value=="")
+	{
+		alert("select ERO");
+		document.form1.ero.focus();
+		return false;
+
+	}
+	else if(document.form1.sno.value=="")
+	{
+		alert("Enter Service NO");
+		document.form1.sno.focus();
+		return false;
+
+	}
+	else
+	{
+	//document.form1.action="https://www.billdesk.com/pgidsk/pgijsp/apcpdcl_paydetails_current.jsp";
+	//document.form1.submit();
+	}
+  }
+}
+
+
+function showERO(chosen) {
+	var ERO = document.form1.ero;
+	ERO.options.length = 0;
+
+if (chosen == "0") {
+	ERO.options[ERO.options.length] = new Option('== Select  Biller ==', '');
+}
+if (chosen == "HYD") {
+ ERO.options[ERO.options.length] = new Option('== Select  ERO ==','');
+ ERO.options[ERO.options.length] = new Option('A.C.GUARDS','9');
+ ERO.options[ERO.options.length] = new Option('AZAMABAD','4');
+ ERO.options[ERO.options.length] = new Option('BANJARA HILLS','11');
+ ERO.options[ERO.options.length] = new Option('BOWENPALLY','12');
+ ERO.options[ERO.options.length] = new Option('CHANCHALGUDA','8');
+ ERO.options[ERO.options.length] = new Option('GREENLANDS','1');
+ ERO.options[ERO.options.length] = new Option('INDIRA PARK','7');
+ ERO.options[ERO.options.length] = new Option('MINT COMPOUND','5');
+ ERO.options[ERO.options.length] = new Option('PARADISE','6');
+ ERO.options[ERO.options.length] = new Option('SALAR JUNG','3');
+ ERO.options[ERO.options.length] = new Option('SANATHNAGAR','50');
+ ERO.options[ERO.options.length] = new Option('SITHAPHALMANDI','10');
+ ERO.options[ERO.options.length] = new Option('SULTAN BAZAR','2');
+
+		}
+if (chosen == "RRN") {
+ 	//ERO.options[ERO.options.length] = new Option('== Select  ERO ==','');
+	ERO.options[ERO.options.length] = new Option('SAINIKPURI','312');
+ ERO.options[ERO.options.length] = new Option('CHAMPAPET','14');
+  ERO.options[ERO.options.length] = new Option('GAGANPAHAD','322');
+ERO.options[ERO.options.length] = new Option('HABSIGUDA','311');
+ERO.options[ERO.options.length] = new Option('JEEDIMETLA','315');
+ ERO.options[ERO.options.length] = new Option('KUKATPALLY','15');
+ ERO.options[ERO.options.length] = new Option('MALKAJGIRI','324');
+ ERO.options[ERO.options.length] = new Option('MEDCHAL','316');
+ 
+ ERO.options[ERO.options.length] = new Option('SAROORNAGAR','13');
+ ERO.options[ERO.options.length] = new Option('TANDOOR','319');
+ ERO.options[ERO.options.length] = new Option('VIKARABAD','318');
+ 
+ 		}
+if (chosen == "MDK") {
+ 	ERO.options[ERO.options.length] = new Option('== Select  ERO ==','');
+ ERO.options[ERO.options.length] = new Option('SANGAREDDY','67');
+ ERO.options[ERO.options.length] = new Option('PATANCHERU','70');
+ ERO.options[ERO.options.length] = new Option('ZAHEERABAD','69');
+ ERO.options[ERO.options.length] = new Option('MEDAK','66');
+ ERO.options[ERO.options.length] = new Option('JOGIPET','77');
+ ERO.options[ERO.options.length] = new Option('SIDDIPET','23');
+ ERO.options[ERO.options.length] = new Option('GAJWEL','25');
+		}
+if (chosen == "MHB") {
+ 	ERO.options[ERO.options.length] = new Option('== Select  ERO ==','');
+ ERO.options[ERO.options.length] = new Option('MAHBOOB NAGAR','21');
+ ERO.options[ERO.options.length] = new Option('ATHMAKUR','29');
+ ERO.options[ERO.options.length] = new Option('NARAYANPET','27');
+ ERO.options[ERO.options.length] = new Option('GADWAL','26');
+ ERO.options[ERO.options.length] = new Option('SHADNAGAR','28');
+ ERO.options[ERO.options.length] = new Option('JADCHERLA','30');
+ ERO.options[ERO.options.length] = new Option('KALWAKURTHY','22');
+ ERO.options[ERO.options.length] = new Option('NAGAR KURNOOL','32');
+ ERO.options[ERO.options.length] = new Option('WANAPARTHY','33');
+ 
+ 		}
+if (chosen == "KNL") {
+ERO.options[ERO.options.length] = new Option('== Select  ERO ==','');
+ ERO.options[ERO.options.length] = new Option('KURNOOL','40');
+ ERO.options[ERO.options.length] = new Option('DHONE','46');
+ ERO.options[ERO.options.length] = new Option('KURNOOL RURAL','47');
+ ERO.options[ERO.options.length] = new Option('NANDIKOTKUR','48');
+ ERO.options[ERO.options.length] = new Option('ADONI','42');
+ ERO.options[ERO.options.length] = new Option('PATTIKONDA','41');
+ ERO.options[ERO.options.length] = new Option('YEMMIGANNUR','44');
+ ERO.options[ERO.options.length] = new Option('ALLAGADDA','43');
+ ERO.options[ERO.options.length] = new Option('BANAGANAPALLI','45');
+ ERO.options[ERO.options.length] = new Option('NANDYAL','49');
+		}
+if (chosen == "NLG") {
+ ERO.options[ERO.options.length] = new Option('== Select  ERO ==','');
+ ERO.options[ERO.options.length] = new Option('ALER','928');
+ ERO.options[ERO.options.length] = new Option('BHONGIR','908');
+ ERO.options[ERO.options.length] = new Option('DEVARAKONDA','906');
+ ERO.options[ERO.options.length] = new Option('HALIA','926');
+ ERO.options[ERO.options.length] = new Option('HUZURNAGAR','925');
+ ERO.options[ERO.options.length] = new Option('KODADA','903');
+ ERO.options[ERO.options.length] = new Option('MIRYALAGUDA','905');
+ ERO.options[ERO.options.length] = new Option('MOTHKUR','922');
+ ERO.options[ERO.options.length] = new Option('MUNUGODU','916');
+ ERO.options[ERO.options.length] = new Option('NAKREKAL','921');
+ ERO.options[ERO.options.length] = new Option('NALGONDA','901');
+ ERO.options[ERO.options.length] = new Option('NAMPALLY','915');
+ ERO.options[ERO.options.length] = new Option('RAMANNAPET','902');
+ ERO.options[ERO.options.length] = new Option('SURYAPET','904');
+ ERO.options[ERO.options.length] = new Option('THUNGATHURTHY','921');
+ 	}
+if (chosen == "ATP") {
+	ERO.options[ERO.options.length] = new Option('== Select  ERO ==','');
+ ERO.options[ERO.options.length] = new Option('ATP TOWN','101');
+ ERO.options[ERO.options.length] = new Option('WEST/EAST','102');
+ ERO.options[ERO.options.length] = new Option('KALYAN DURG','103');
+ ERO.options[ERO.options.length] = new Option('DHARMAVARAM','110');
+ ERO.options[ERO.options.length] = new Option('TADI PATRI','104');
+ ERO.options[ERO.options.length] = new Option('RAYADURG','106');
+ ERO.options[ERO.options.length] = new Option('GUNTAKAL','105');
+ ERO.options[ERO.options.length] = new Option('HINDUPUR','107');
+ ERO.options[ERO.options.length] = new Option('PUTTAPARTHY','108');
+ ERO.options[ERO.options.length] = new Option('KADIRI TOWN','109');		
+		}
+
+}
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+
+</script>
+<script src="right_mouse.js" type="text/javascript"></script>
+<link href="apcpdcl.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<table width="816" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="alignc">
+  <tbody>
+  <tr>
+    <td><table id="AutoNumber3" cellspacing="0" width="100%" border="0">
+            <tbody>
+              <tr style="border-bottom: 1px solid #999;">
+                <td colspan="2" class="head" align="center" style="padding-left: 63px;">Online Electricity Bill Payment</td>
+                
+              </tr>
+              
+                <td colspan="3" align="center">
+                  <form name="form1" id="form1" method="post" onSubmit="return validateForm2()">
+<div id="wrapper">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tbody><tr>
+<td class="tbmain" align="center">
+<table cellpadding="0" cellspacing="0" border="0" class="tbdeatil" width="100%" align="center">
+<tbody><tr>
+	<td>Select Distict : </td>
+	<td class="rtd">
+        <select name="circle" onChange="showERO(document.form1.circle.options[document.form1.circle.selectedIndex].value);" on="">
+           <option selected="" value="">--Select--</option>
+			
+            <option value="HYD" name="HYD">HYDERABAD</option>
+            
+            <option value="MDK" name="MDK">MEDAK</option>
+		<!--<option value="ATP" name="ATP">ANANTAPUR</option>-->
+            <option value="NLG" name="NAL">NALGONDA</option>
+		<!--<option value="KNL" name="KNL">KURNOOL</option> -->
+            <option value="MHB" name="MHB">MAHBOOBNAGAR</option>
+			<option value="RRN" name="RRN">RANGAREDDY</option>
+        </select>    
+    </td>
+</tr>
+<tr>
+	<td>ERO : </td>
+	<td class="rtd">
+        <select name="ero" style="width:200px">
+	        <option selected="" value="">--Select--</option>
+        </select>    
+    </td>
+</tr>
+<tr>
+	<td>Service Number:</td>
+	<td class="rtd">
+		<input tabindex="1" maxlength="13" size="13" name="sno" autocomplete="off">    
+    </td>
+</tr>
+<tr>
+	<td class="rtd mid" colspan="2" align="center"><strong>OR</strong></td>
+</tr>
+<tr>
+	<td>Unique Service Number:</td>
+	<td class="rtd"><input tabindex="1" maxlength="13" size="13" name="uscno" autocomplete="off"> 
+    <a class="tooltip" href="#"><input name="btn2" type="button" value="?" class="btn-submit btntxt"></a>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+	<td>
+    </td>
+</tr>
+</tbody></table>
+<p style="text-align:left;"><em>Note:</em> Please Enter the Service Connection No. as printed on the Bill along with spaces(if any). </p>
+
+<input border="0" type="button" style="float:left;" class="btn-submit" value="Verify the Bill Payment" onClick="MM_goToURL('parent','https://www.tssouthernpower.com/Billdesk/OnlineBill.jsp');return document.MM_returnValue" name="verify">
+
+<input name="btn2" type="submit" value="Make Payment"  class="btn-submit">
+ 
+
+ </div>  
+ <div style="clear:both;"></div>                  
+                </form></td>
+              </tr>
+              <tr>
+              	<td style="font-size:6px;">&nbsp;</td>
+              </tr>
+              <tr><td><hr color="#f1f1f1" size="1"></td></tr>              
+                           
+            </tbody>
+          </table></td>
+  </tr>
+  <tr>
+    <td class="logotpbrd">Copyright 2010.R-APDRP. All Rights Reserved</td>
+  </tr>
+</tbody></table>
+
+<div id='post-result'>Hi hru?</div>
+
+
+
+</body></html>
